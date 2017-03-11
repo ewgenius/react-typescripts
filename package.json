@@ -1,0 +1,9 @@
+{
+  "name": "react-typescripts",
+  "version": "0.0.1",
+  "description": "CRA react-scripts fork with typescript support",
+  "main": "index.js",
+  "repository": "git@github.com:ewgenius/react-typescripts.git",
+  "author": "Evgeniy Khramkov <ewgeniux@gmail.com>",
+  "license": "MIT"
+}
