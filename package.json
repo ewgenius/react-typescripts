@@ -8,14 +8,27 @@
   "engines": {
     "node": ">=4"
   },
-  "files": [
-  ],
+  "files": [],
   "bin": {
     "react-typescripts": "./bin/react-typescripts.js"
   },
   "scripts": {
+    "build": "rm -rf dist && tsc -p ./"
   },
   "bugs": {
     "url": "https://github.com/ewgenius/react-scripts/issues"
+  },
+  "dependencies": {
+    "ts-loader": "2.0.1",
+    "tslint": "4.5.1",
+    "tslint-loader": "3.4.3",
+    "typescript": "2.2.1",
+    "webpack": "2.2.1",
+    "webpack-dev-server": "2.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.8",
+    "@types/webpack": "^2.2.11",
+    "@types/webpack-dev-server": "^1.12.6"
   }
 }
