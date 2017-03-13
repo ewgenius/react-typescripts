@@ -51,13 +51,8 @@ root_path=$PWD
 # Pack react-typescripts so we can verify they work.
 # ******************************************************************************
 
-# pack react-typescripts
+cd "$root_path"
 scripts_path="$root_path"/`npm pack`
-
-# Restore package.json
-rm package.json
-mv package.json.orig package.json
-
 
 # ******************************************************************************
 # Now that we have packed them, call the global CLI.
