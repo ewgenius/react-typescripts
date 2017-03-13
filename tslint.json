@@ -1,0 +1,7 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "quotemark": ["single", true],
+    "no-console": [false]
+  }
+}
