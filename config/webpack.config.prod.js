@@ -50,10 +50,11 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 // (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
 // However, our output is structured with css, js and media folders.
 // To have this structure working with relative paths, we have to use custom options.
-const extractTextPluginOptions = shouldUseRelativeAssetPaths
-  ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split('/').length).join('../') }
-  : {};
+const extractTextPluginOptions = shouldUseRelativeAssetPaths ? // Making sure that the publicPath goes back to to build folder.
+  {
+    publicPath: Array(cssFilename.split('/').length).join('../')
+  } :
+  {};
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -109,28 +110,19 @@ module.exports = {
   module: {
     rules: [
       // Disable require.ensure as it's not a standard language feature.
-      { parser: { requireEnsure: false } },
+      {
+        parser: {
+          requireEnsure: false
+        }
+      },
       // First, run the linter.
-      // It's important to do this before Babel processes the JS.
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   enforce: 'pre',
-      //   use: [
-      //     {
-      //       // @remove-on-eject-begin
-      //       // Point ESLint to our predefined config.
-      //       options: {
-      //         // TODO: consider separate config for production,
-      //         // e.g. to enable no-console and no-debugger only in production.
-      //         configFile: path.join(__dirname, '../eslintrc'),
-      //         useEslintrc: false,
-      //       },
-      //       // @remove-on-eject-end
-      //       loader: 'eslint-loader',
-      //     },
-      //   ],
-      //   include: paths.appSrc,
-      // },
+      {
+        test: /\.(ts|tsx)$/,
+        enforce: 'pre',
+        use: [{
+          loader: 'tslint-loader',
+        }]
+      },
       // ** ADDING/UPDATING LOADERS **
       // The "url" loader handles all assets unless explicitly excluded.
       // The `exclude` list *must* be updated with every change to loader extensions.
@@ -165,18 +157,12 @@ module.exports = {
           name: 'static/media/[name].[hash:8].[ext]',
         },
       },
-      // Process JS with Babel.
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   include: paths.appSrc,
-      //   loader: 'babel-loader',
-      //   // @remove-on-eject-begin
-      //   options: {
-      //     babelrc: false,
-      //     presets: [require.resolve('babel-preset-react-app')],
-      //   },
-      //   // @remove-on-eject-end
-      // },
+      // Process TS with Typescripts.
+      {
+        test: /\.(ts|tsx)$/,
+        include: paths.appSrc,
+        loader: 'ts-loader'
+      },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -192,11 +178,9 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract(
-          Object.assign(
-            {
+          Object.assign({
               fallback: 'style-loader',
-              use: [
-                {
+              use: [{
                   loader: 'css-loader',
                   options: {
                     importLoaders: 1,
