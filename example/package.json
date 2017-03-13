@@ -4,7 +4,7 @@
   "scripts": {
     "start": "../bin/react-typescripts.js start",
     "build": "../bin/react-typescripts.js build",
-    "test": "../bin/react-typescripts.js test",
+    "test": "../bin/react-typescripts.js test --env=jsdom",
     "eject": "../bin/react-typescripts.js eject"
   }
 }
