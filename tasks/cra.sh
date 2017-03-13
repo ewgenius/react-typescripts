@@ -51,14 +51,7 @@ root_path=$PWD
 # Pack react-typescripts so we can verify they work.
 # ******************************************************************************
 
-# Save package.json because we're going to touch it
-cp package.json package.json.orig
-
-# Replace own dependencies (those in the `packages` dir) with the local paths
-# of those packages.
-# node "$root_path"/tasks/replace-own-deps.js
-
-# Finally, pack react-typescripts
+# pack react-typescripts
 scripts_path="$root_path"/`npm pack`
 
 # Restore package.json
