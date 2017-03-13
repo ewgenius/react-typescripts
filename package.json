@@ -8,6 +8,12 @@
   "engines": {
     "node": ">=4"
   },
+  "files": [
+    "bin",
+    "config",
+    "scripts",
+    "template"
+  ],
   "bugs": {
     "url": "https://github.com/ewgenius/react-scripts/issues"
   },

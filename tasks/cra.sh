@@ -47,14 +47,36 @@ set -x
 cd ..
 root_path=$PWD
 
+# ******************************************************************************
+# Pack react-typescripts so we can verify they work.
+# ******************************************************************************
+
+# Save package.json because we're going to touch it
+cp package.json package.json.orig
+
+# Replace own dependencies (those in the `packages` dir) with the local paths
+# of those packages.
+# node "$root_path"/tasks/replace-own-deps.js
+
+# Finally, pack react-typescripts
+scripts_path="$root_path"/`npm pack`
+
+# Restore package.json
+rm package.json
+mv package.json.orig package.json
+
 
 # ******************************************************************************
-# call the CLI.
+# Now that we have packed them, call the global CLI.
 # ******************************************************************************
+echo "$scripts_path $@"
+
+# If Yarn is installed, clean its cache because it may have cached react-typescripts
+yarn cache clean || true
 
 # Go back to the root directory and run the command from here
 cd "$root_path"
-"$root_path"/node_modules/.bin/create-react-app --scripts-version="$scripts_path" "$@"
+node packages/create-react-app/index.js --scripts-version="$scripts_path" "$@"
 
 # Cleanup
 cleanup
