@@ -1,0 +1,10 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "../bin/react-typescripts.js start",
+    "build": "../bin/react-typescripts.js build",
+    "test": "../bin/react-typescripts.js test",
+    "eject": "../bin/react-typescripts.js eject"
+  }
+}
