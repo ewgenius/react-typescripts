@@ -47,14 +47,27 @@ set -x
 cd ..
 root_path=$PWD
 
+# ******************************************************************************
+# Pack react-typescripts so we can verify they work.
+# ******************************************************************************
+
+# pack react-typescripts
+scripts_path="$root_path"/`npm pack`
+
+# Restore package.json
+rm package.json
+mv package.json.orig package.json
+
 
 # ******************************************************************************
-# call the CLI.
+# Now that we have packed them, call the global CLI.
 # ******************************************************************************
+
+# If Yarn is installed, clean its cache because it may have cached react-typescripts
+yarn cache clean || true
 
 # Go back to the root directory and run the command from here
-cd "$root_path"
-"$root_path"/node_modules/.bin/create-react-app --scripts-version="$scripts_path" "$@"
+create-react-app --scripts-version="$scripts_path" "$@"
 
 # Cleanup
 cleanup

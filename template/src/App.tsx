@@ -1,13 +1,17 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import * as React from 'react';
+import { Component } from 'react';
+// declare var require: any;
 import './App.css';
+// const logo = require('./logo.svg');
 
-class App extends Component {
-  render() {
+class App extends Component<{}, {}> {
+  public render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          {// <img src={logo} className="App-logo" alt="logo" />
+          }
+
           <h2>Welcome to React</h2>
         </div>
         <p className="App-intro">
@@ -19,3 +23,4 @@ class App extends Component {
 }
 
 export default App;
+;

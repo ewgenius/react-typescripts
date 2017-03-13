@@ -112,28 +112,25 @@ module.exports = {
       { parser: { requireEnsure: false } },
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
-      {
-        test: /\.(ts|tsx)$/
-      },
-      {
-        test: /\.(js|jsx)$/,
-        enforce: 'pre',
-        use: [
-          {
-            // @remove-on-eject-begin
-            // Point ESLint to our predefined config.
-            options: {
-              // TODO: consider separate config for production,
-              // e.g. to enable no-console and no-debugger only in production.
-              configFile: path.join(__dirname, '../eslintrc'),
-              useEslintrc: false,
-            },
-            // @remove-on-eject-end
-            loader: 'eslint-loader',
-          },
-        ],
-        include: paths.appSrc,
-      },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   enforce: 'pre',
+      //   use: [
+      //     {
+      //       // @remove-on-eject-begin
+      //       // Point ESLint to our predefined config.
+      //       options: {
+      //         // TODO: consider separate config for production,
+      //         // e.g. to enable no-console and no-debugger only in production.
+      //         configFile: path.join(__dirname, '../eslintrc'),
+      //         useEslintrc: false,
+      //       },
+      //       // @remove-on-eject-end
+      //       loader: 'eslint-loader',
+      //     },
+      //   ],
+      //   include: paths.appSrc,
+      // },
       // ** ADDING/UPDATING LOADERS **
       // The "url" loader handles all assets unless explicitly excluded.
       // The `exclude` list *must* be updated with every change to loader extensions.
@@ -169,17 +166,17 @@ module.exports = {
         },
       },
       // Process JS with Babel.
-      {
-        test: /\.(js|jsx)$/,
-        include: paths.appSrc,
-        loader: 'babel-loader',
-        // @remove-on-eject-begin
-        options: {
-          babelrc: false,
-          presets: [require.resolve('babel-preset-react-app')],
-        },
-        // @remove-on-eject-end
-      },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   include: paths.appSrc,
+      //   loader: 'babel-loader',
+      //   // @remove-on-eject-begin
+      //   options: {
+      //     babelrc: false,
+      //     presets: [require.resolve('babel-preset-react-app')],
+      //   },
+      //   // @remove-on-eject-end
+      // },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.

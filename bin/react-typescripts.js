@@ -46,7 +46,7 @@ switch (script) {
     console.log('Unknown script "' + script + '".');
     console.log('Perhaps you need to update react-typescripts?');
     console.log(
-      'See: https://github.com/facebookincubator/create-react-app/blob/master/packages/react-typescripts/template/README.md#updating-to-new-releases'
+      'See: https://github.com/ewgenius/react-typescripts'
     );
     break;
 }
