@@ -110,26 +110,19 @@ module.exports = {
   module: {
     rules: [
       // Disable require.ensure as it's not a standard language feature.
-      { parser: { requireEnsure: false } },
+      {
+        parser: {
+          requireEnsure: false
+        }
+      },
       // First, run the linter.
-      // It's important to do this before Babel processes the JS.
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   enforce: 'pre',
-      //   use: [
-      //     {
-      //       // @remove-on-eject-begin
-      //       // Point ESLint to our predefined config.
-      //       options: {
-      //         configFile: path.join(__dirname, '../eslintrc'),
-      //         useEslintrc: false,
-      //       },
-      //       // @remove-on-eject-end
-      //       loader: 'eslint-loader',
-      //     },
-      //   ],
-      //   include: paths.appSrc,
-      // },
+      {
+        test: /\.(ts|tsx)$/,
+        enforce: 'pre',
+        use: [{
+          loader: 'tslint-loader',
+        }]
+      },
       // ** ADDING/UPDATING LOADERS **
       // The "url" loader handles all assets unless explicitly excluded.
       // The `exclude` list *must* be updated with every change to loader extensions.
@@ -166,22 +159,12 @@ module.exports = {
           name: 'static/media/[name].[hash:8].[ext]',
         },
       },
-      // Process JS with Babel.
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   include: paths.appSrc,
-      //   loader: 'babel-loader',
-      //   options: {
-      //     // @remove-on-eject-begin
-      //     babelrc: false,
-      //     presets: [require.resolve('babel-preset-react-app')],
-      //     // @remove-on-eject-end
-      //     // This is a feature of `babel-loader` for webpack (not Babel itself).
-      //     // It enables caching results in ./node_modules/.cache/babel-loader/
-      //     // directory for faster rebuilds.
-      //     cacheDirectory: true,
-      //   },
-      // },
+      // Process TS with Typescripts.
+      {
+        test: /\.(ts|tsx)$/,
+        include: paths.appSrc,
+        loader: 'ts-loader'
+      },
       // "postcss" loader applies autoprefixer to our CSS.
       // "css" loader resolves paths in CSS and adds assets as dependencies.
       // "style" loader turns CSS into JS modules that inject <style> tags.
