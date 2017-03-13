@@ -73,28 +73,11 @@ then
 fi
 
 # ******************************************************************************
-# First, pack and install create-react-app.
+# First, install create-react-app.
 # ******************************************************************************
 
-# Pack CLI
-cd "$root_path"/packages/create-react-app
-cli_path=$PWD/`npm pack`
-
-# Install the CLI in a temporary location
 cd "$temp_cli_path"
-npm install "$cli_path"
-
-# ******************************************************************************
-# Test --scripts-version with a version number
-# ******************************************************************************
-
-cd "$temp_app_path"
-create_react_app --scripts-version=0.4.0 test-app-version-number
-cd test-app-version-number
-
-# Check corresponding scripts version is installed.
-exists node_modules/react-scripts
-grep '"version": "0.4.0"' node_modules/react-scripts/package.json
+npm install create-react-app
 
 # ******************************************************************************
 # Test --scripts-version with a tarball url
