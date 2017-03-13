@@ -8,7 +8,12 @@
   "engines": {
     "node": ">=4"
   },
-  "files": [],
+  "files": [
+    "bin",
+    "scripts",
+    "dist",
+    "template"
+  ],
   "bin": {
     "react-typescripts": "./bin/react-typescripts.js"
   },
