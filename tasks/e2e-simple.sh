@@ -22,8 +22,6 @@ temp_app_path=`mktemp -d 2>/dev/null || mktemp -d -t 'temp_app_path'`
 function cleanup {
   echo 'Cleaning up.'
   cd "$root_path"
-  # Uncomment when snapshot testing is enabled by default:
-  # rm ./packages/react-scripts/template/src/__snapshots__/App.test.js.snap
   rm -rf "$temp_cli_path" $temp_app_path
 }
 
@@ -65,15 +63,6 @@ set -x
 cd ..
 root_path=$PWD
 
-# Prevent lerna bootstrap, we only want top-level dependencies
-cp package.json package.json.bak
-grep -v "lerna bootstrap" package.json > temp && mv temp package.json
-npm install
-mv package.json.bak package.json
-
-# We need to install create-react-app deps to test it
-cd "$root_path"/packages/create-react-app
-npm install
 cd "$root_path"
 
 # If the node version is < 4, the script should just give an error.
@@ -97,21 +86,21 @@ then
 fi
 
 # Lint own code
-./node_modules/.bin/eslint --max-warnings 0 .
+# ./node_modules/.bin/eslint --max-warnings 0 .
 
 # ******************************************************************************
 # First, test the create-react-app development environment.
 # This does not affect our users but makes sure we can develop it.
 # ******************************************************************************
 
-# Test local build command
-npm run build
-# Check for expected output
-exists build/*.html
-exists build/static/js/*.js
-exists build/static/css/*.css
-exists build/static/media/*.svg
-exists build/favicon.ico
+# # Test local build command
+# npm run build
+# # Check for expected output
+# exists build/*.html
+# exists build/static/js/*.js
+# exists build/static/css/*.css
+# exists build/static/media/*.svg
+# exists build/favicon.ico
 
 # Run tests with CI flag
 CI=true npm test
@@ -119,32 +108,15 @@ CI=true npm test
 # exists template/src/__snapshots__/App.test.js.snap
 
 # Test local start command
-npm start -- --smoke-test
+# npm start -- --smoke-test
 
 # ******************************************************************************
-# Next, pack react-scripts and create-react-app so we can verify they work.
+# Next, pack react-typescripts so we can verify they work.
 # ******************************************************************************
 
-# Pack CLI
-cd "$root_path"/packages/create-react-app
-cli_path=$PWD/`npm pack`
-
-# Go to react-scripts
-cd "$root_path"/packages/react-scripts
-
-# Save package.json because we're going to touch it
-cp package.json package.json.orig
-
-# Replace own dependencies (those in the `packages` dir) with the local paths
-# of those packages.
-node "$root_path"/tasks/replace-own-deps.js
-
-# Finally, pack react-scripts
-scripts_path="$root_path"/packages/react-scripts/`npm pack`
-
-# Restore package.json
-rm package.json
-mv package.json.orig package.json
+# Pack react-typescripts
+cd "$root_path"
+scripts_path="$root_path"/`npm pack`
 
 # ******************************************************************************
 # Now that we have packed them, create a clean app folder and install them.
@@ -157,15 +129,15 @@ cd "$temp_cli_path"
 # the CLI properly in the temporary location if it is missing.
 npm init --yes
 
-# Now we can install the CLI from the local package.
-npm install "$cli_path"
+# Now we can install current CLI from the npm.
+npm install create-react-app
 
 # Install the app in a temporary location
 cd $temp_app_path
 create_react_app --scripts-version="$scripts_path" test-app
 
 # ******************************************************************************
-# Now that we used create-react-app to create an app depending on react-scripts,
+# Now that we used create-react-app to create an app depending on react-typescripts,
 # let's make sure all npm scripts are in the working state.
 # ******************************************************************************
 
@@ -236,7 +208,7 @@ CI=true npm test
 # exists src/__snapshots__/App.test.js.snap
 
 # Test the server
-npm start -- --smoke-test
+# npm start -- --smoke-test
 
 # Test environment handling
 verify_env_url
@@ -245,14 +217,14 @@ verify_env_url
 # Finally, let's check that everything still works after ejecting.
 # ******************************************************************************
 
-# Eject...
-echo yes | npm run eject
+# # Eject...
+# echo yes | npm run eject
 
-# ...but still link to the local packages
-npm link "$root_path"/packages/babel-preset-react-app
-npm link "$root_path"/packages/eslint-config-react-app
-npm link "$root_path"/packages/react-dev-utils
-npm link "$root_path"/packages/react-scripts
+# # ...but still link to the local packages
+# npm link "$root_path"/packages/babel-preset-react-app
+# npm link "$root_path"/packages/eslint-config-react-app
+# npm link "$root_path"/packages/react-dev-utils
+# npm link "$root_path"/packages/react-scripts
 
 # Test the build
 npm run build

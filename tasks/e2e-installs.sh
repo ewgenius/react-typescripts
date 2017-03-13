@@ -92,7 +92,7 @@ scripts_path="$root_path"/`npm pack`
 
 cd "$temp_app_path"
 create_react_app --scripts-version="$scripts_path" test-react-typescripts-app
-cd test-app-tarball-url
+cd test-react-typescripts-app
 
 # Check scripts is installed.
 exists node_modules/react-typescripts

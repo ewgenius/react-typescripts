@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ts-jest": "^19.0.0"
+  }
+}

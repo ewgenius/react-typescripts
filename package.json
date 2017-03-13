@@ -14,13 +14,16 @@
     "scripts",
     "template"
   ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom"
+  },
   "bugs": {
     "url": "https://github.com/ewgenius/react-scripts/issues"
   },
   "bin": {
     "react-typescripts": "./bin/react-typescripts.js"
   },
-  "scripts": {},
   "dependencies": {
     "autoprefixer": "6.7.5",
     "case-sensitive-paths-webpack-plugin": "1.1.4",
@@ -30,6 +33,7 @@
     "css-loader": "0.26.2",
     "detect-port": "1.1.0",
     "dotenv": "2.0.0",
+    "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "0.10.1",
     "fs-extra": "0.30.0",
     "html-webpack-plugin": "2.28.0",
