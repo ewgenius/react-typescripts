@@ -45,7 +45,7 @@ const config: Configuration = {
         }],
         include: paths.appSrc
       }, {
-        test: /\(.*)$/,
+        test: /\.(.+)$/,
         exclude: [
           /\.html$/,
           /\.(ts|tsx)$/,

@@ -43,7 +43,7 @@ const config = {
                     }],
                 include: paths_1.default.appSrc
             }, {
-                test: /\(.*)$/,
+                test: /\.(.+)$/,
                 exclude: [
                     /\.html$/,
                     /\.(ts|tsx)$/,
