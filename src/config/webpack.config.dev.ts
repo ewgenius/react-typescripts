@@ -1,4 +1,3 @@
-// import * as path from 'path';
 import * as autoprefixer from 'autoprefixer';
 import * as CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';

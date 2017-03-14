@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function start() {
-    console.log('start');
+function build() {
+    console.log('build');
 }
-exports.start = start;
+exports.build = build;
