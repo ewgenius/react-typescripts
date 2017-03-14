@@ -64,7 +64,7 @@ function resolveOwn(relativePath: string) {
 let paths = {
   appBuild: resolveApp('build'),
   appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
+  appIndexJs: resolveApp('src/index.tsx'),
   appNodeModules: resolveApp('node_modules'),
   appPackageJson: resolveApp('package.json'),
   appPath: resolveApp('.'),
