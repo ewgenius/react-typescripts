@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// import * as path from 'path';
 const autoprefixer = require("autoprefixer");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
