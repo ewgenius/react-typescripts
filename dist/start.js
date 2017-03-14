@@ -15,29 +15,24 @@
 // // // var getProcessForPort = require('react-dev-utils/getProcessForPort');
 // // // var openBrowser = require('react-dev-utils/openBrowser');
 // // // var prompt = require('react-dev-utils/prompt');
-
 // // // Load environment variables from .env file. Suppress warnings using silent
 // // // if this file is missing. dotenv will never modify any environment variables
 // // // that have already been set.
 // // // https://github.com/motdotla/dotenv
 // process.env.NODE_ENV = 'development';
 // configDotenv({ silent: true });
-
 // const useYarn = fs.existsSync(paths.yarnLockFile);
 // const cli = useYarn ? 'yarn' : 'npm';
 // const isInteractive = process.stdout.isTTY;
-
 // // Tools like Cloud9 rely on this.
 // const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 // // let compiler: Webpack.Compiler | Webpack.Watching;
 // // let handleCompile: (err: Error, stats: any) => any;
-
 // detect(DEFAULT_PORT).then((port) => {
 //   if (port === DEFAULT_PORT) {
 //     // run(port);
 //     return;
 //   }
-
 //   if (isInteractive) {
 //     clearConsole();
 //     let existingProcess = getProcessForPort(DEFAULT_PORT);
@@ -45,7 +40,6 @@
 //       chalk.yellow('Something is already running on port ' + DEFAULT_PORT + '.' +
 //         ((existingProcess) ? ' Probably:\n  ' + existingProcess : '')) +
 //         '\n\nWould you like to run the app on another port instead?';
-
 //     prompt(question, true).then((shouldChangePort) => {
 //       if (shouldChangePort) {
 //         run(port);
@@ -55,12 +49,10 @@
 //     console.log(chalk.red('Something is already running on port ' + DEFAULT_PORT + '.'));
 //   }
 // });
-
 // // // // Warn and crash if required files are missing
 // // // if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 // // //   process.exit(1);
 // // // }
-
 // // // You can safely remove this after ejecting.
 // // // We only use this block for testing of Create React App itself:
 // // const isSmokeTest = process.argv.some((arg) => arg.indexOf('--smoke-test') > -1);
@@ -73,12 +65,10 @@
 // //     }
 // //   };
 // // }
-
 // // function setupCompiler(host: string, port: number, protocol: any) {
 // //   // "Compiler" is a low-level interface to Webpack.
 // //   // It lets us listen to some events and provide our own custom messages.
 // //   compiler = Webpack(config, handleCompile);
-
 // //   // "invalid" event fires when you have changed a file, and Webpack is
 // //   // recompiling a bundle. WebpackDevServer takes care to pause serving the
 // //   // bundle, so if you refresh, it'll wait instead of serving the old one.
@@ -89,27 +79,22 @@
 // //     }
 // //     console.log('Compiling...');
 // //   });
-
 // //   let isFirstCompile = true;
-
 // //   // "done" event fires when Webpack has finished recompiling the bundle.
 // //   // Whether or not you have warnings or errors, you will get this event.
 // //   compiler.plugin('done', function (stats) {
 // //     if (isInteractive) {
 // //       clearConsole();
 // //     }
-
 // //     // We have switched off the default Webpack output in WebpackDevServer
 // //     // options so we are going to "massage" the warnings and errors and present
 // //     // them in a readable focused way.
 // //     let messages = formatWebpackMessages(stats.toJson({}, true));
 // //     let isSuccessful = !messages.errors.length && !messages.warnings.length;
 // //     let showInstructions = isSuccessful && (isInteractive || isFirstCompile);
-
 // //     if (isSuccessful) {
 // //       console.log(chalk.green('Compiled successfully!'));
 // //     }
-
 // //     if (showInstructions) {
 // //       console.log();
 // //       console.log('The app is running at:');
@@ -121,7 +106,6 @@
 // //       console.log();
 // //       isFirstCompile = false;
 // //     }
-
 // //     // If errors exist, only show errors.
 // //     if (messages.errors.length) {
 // //       console.log(chalk.red('Failed to compile.'));
@@ -132,7 +116,6 @@
 // //       });
 // //       return;
 // //     }
-
 // //     // Show warnings if no errors were found.
 // //     if (messages.warnings.length) {
 // //       console.log(chalk.yellow('Compiled with warnings.'));
@@ -148,7 +131,6 @@
 // //     }
 // //   });
 // // }
-
 // // // // We need to provide a custom onError function for httpProxyMiddleware.
 // // // // It allows us to log custom error messages on the console.
 // // // function onProxyError(proxy) {
@@ -163,7 +145,6 @@
 // // //       chalk.cyan(err.code) + ').'
 // // //     );
 // // //     console.log();
-
 // // //     // And immediately send the proper error response to the client.
 // // //     // Otherwise, the request will eventually timeout with ERR_EMPTY_RESPONSE on the client side.
 // // //     if (res.writeHead && !res.headersSent) {
@@ -174,7 +155,6 @@
 // // //     );
 // // //   }
 // // // }
-
 // // // function addMiddleware(devServer) {
 // // //   // `proxy` lets you to specify a fallback server during development.
 // // //   // Every unrecognized request will be forwarded to it.
@@ -201,7 +181,6 @@
 // // //       console.log(chalk.red('Either remove "proxy" from package.json, or make it a string.'));
 // // //       process.exit(1);
 // // //     }
-
 // // //     // Otherwise, if proxy is specified, we will let it handle any request.
 // // //     // There are a few exceptions which we won't send to the proxy:
 // // //     // - /index.html (served as HTML5 history API fallback)
@@ -209,7 +188,6 @@
 // // //     // - /sockjs-node/* (WebpackDevServer uses this for hot reloading)
 // // //     // Tip: use https://jex.im/regulex/ to visualize the regex
 // // //     var mayProxy = /^(?!\/(index\.html$|.*\.hot-update\.json$|sockjs-node\/)).*$/;
-
 // // //     // Pass the scope regex both to Express and to the middleware for proxying
 // // //     // of both HTTP and WebSockets to work without false positives.
 // // //     var hpm = httpProxyMiddleware(pathname => mayProxy.test(pathname), {
@@ -230,18 +208,15 @@
 // // //       xfwd: true
 // // //     });
 // // //     devServer.use(mayProxy, hpm);
-
 // // //     // Listen for the websocket 'upgrade' event and upgrade the connection.
 // // //     // If this is not done, httpProxyMiddleware will not try to upgrade until
 // // //     // an initial plain HTTP request is made.
 // // //     devServer.listeningApp.on('upgrade', hpm.upgrade);
 // // //   }
-
 // // //   // Finally, by now we have certainly resolved the URL.
 // // //   // It may be /index.html, so let the dev server try serving it again.
 // // //   devServer.use(devServer.middleware);
 // // // }
-
 // // // function runDevServer(host, port, protocol) {
 // // //   var devServer = new WebpackDevServer(compiler, {
 // // //     // Enable gzip compression of generated files.
@@ -285,33 +260,27 @@
 // // //     https: protocol === "https",
 // // //     host: host
 // // //   });
-
 // // //   // Our custom middleware proxies requests to /index.html or a remote API.
 // // //   addMiddleware(devServer);
-
 // // //   // Launch WebpackDevServer.
 // // //   devServer.listen(port, err => {
 // // //     if (err) {
 // // //       return console.log(err);
 // // //     }
-
 // // //     if (isInteractive) {
 // // //       clearConsole();
 // // //     }
 // // //     console.log(chalk.cyan('Starting the development server...'));
 // // //     console.log();
-
 // // //     openBrowser(protocol + '://' + host + ':' + port + '/');
 // // //   });
 // // // }
-
 // // // function run(port) {
 // // //   var protocol = process.env.HTTPS === 'true' ? "https" : "http";
 // // //   var host = process.env.HOST || 'localhost';
 // // //   setupCompiler(host, port, protocol);
 // // //   runDevServer(host, port, protocol);
 // // // }
-
 // // // // We attempt to use the default port but if it is busy, we offer the user to
 // // // // run on a different port. `detect()` Promise resolves to the next free port.
 // // // detect(DEFAULT_PORT).then(port => {
@@ -319,7 +288,6 @@
 // // //     run(port);
 // // //     return;
 // // //   }
-
 // // //   if (isInteractive) {
 // // //     clearConsole();
 // // //     var existingProcess = getProcessForPort(DEFAULT_PORT);
@@ -327,7 +295,6 @@
 // // //       chalk.yellow('Something is already running on port ' + DEFAULT_PORT + '.' +
 // // //         ((existingProcess) ? ' Probably:\n  ' + existingProcess : '')) +
 // // //         '\n\nWould you like to run the app on another port instead?';
-
 // // //     prompt(question, true).then(shouldChangePort => {
 // // //       if (shouldChangePort) {
 // // //         run(port);
