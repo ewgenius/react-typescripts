@@ -4,7 +4,7 @@
   "description": "CRA react-typescripts fork with typescript support",
   "repository": "git@github.com:ewgenius/react-typescripts.git",
   "author": "Evgeniy Khramkov <ewgeniux@gmail.com>",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "engines": {
     "node": ">=4"
   },
@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "chalk": "^1.1.3",
+    "detect-port": "^1.1.0",
+    "dotenv": "^4.0.0",
     "fs-extra": "^2.0.0",
     "ts-loader": "2.0.1",
     "tslint": "4.5.1",
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "@types/chalk": "^0.4.31",
+    "@types/dotenv": "^2.0.20",
     "@types/fs-extra": "^0.0.37",
     "@types/node": "^7.0.8",
     "@types/webpack": "^2.2.11",
